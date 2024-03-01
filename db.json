@@ -1,0 +1,26 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "firstname": "atharav",
+      "lastname": "patil",
+      "email": "akiipatil12@gmail.com",
+      "address": "banglore"
+    }
+  ],
+  "posts": [
+    {
+      "id": "1",
+      "text": "a comment about post 1",
+      "postId": "1"
+    },
+    {
+      "id": "2",
+      "text": "another comment about post 1",
+      "postId": "1"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
