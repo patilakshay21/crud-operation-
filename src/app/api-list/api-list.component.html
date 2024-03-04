@@ -11,8 +11,8 @@
           </tr>
         </thead>
         <tbody>
-            @for(user of userList; track user.id){
-          <tr>
+            <!-- @for(user of userList; track user.id){ -->
+          <tr *ngFor="let user of userList">
             <td>{{user.id}}</td>
             <td>{{user.name}}</td>
             <td>{{user.username}}</td>
@@ -21,7 +21,7 @@
             
 
           </tr>
-        }
+        <!-- } -->
         </tbody>
       </table>
 </div>
