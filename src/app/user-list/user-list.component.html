@@ -1,14 +1,12 @@
-<!-- @for(user of users; track user.id){
-    <h3>{{user.id}}</h3>
-    <h3>{{user.name}}</h3>
-} -->
-<div container>
-  
-  <!-- <div class="align mt-5" *ngIf="userList.length === 0">No records found</div> -->
+<div class="container">
 
-<table  class="table table-hover mt-5 table table-success table-bordered border-primary table-striped " id="table">
-   
-    <thead> 
+  <div *ngIf="userList.length == 0">
+    <h1 class="align"> No Records Available </h1>
+  </div>
+  <div *ngIf="userList.length > 0" >
+  <table  class="table table-hover mt-5 table table-success table-bordered border-primary table-striped " id="table">
+
+    <thead>
       <tr>
         <th scope="col">#</th>
         <th scope="col">FirstName</th>
@@ -19,28 +17,21 @@
 
       </tr>
     </thead>
- 
+
     <tbody>
-      <!-- @for(user of userList; track user.id;let $index = $index){ -->
-      <tr *ngFor="let user of userList" >
+      <tr *ngFor="let user of userList">
         <td>{{user.id}}</td>
-        <!-- <td>{{$index+1}}</td> -->
         <td>{{user.firstname}}</td>
         <td>{{user.lastname}}</td>
         <td>{{user.email}}</td>
         <td>{{user.address}}</td>
-
         <td>
           <button type="button" class="btn btn-outline-primary m-2" data-bs-toggle="modal" data-bs-target="#editUserData" (click)="getUsreEdit(user)">Edit</button>
           <button type="button" class="btn btn-outline-danger delete m-2" (click)="DeleteUser(user.id)">Delete</button>
-      </td>
-         
-       
-      </tr>
-    <!-- }  -->
+        </td>
     </tbody>
- 
   </table>
+</div>
 
 
   <!-- edit form modal  -->
@@ -52,38 +43,36 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <div >
+          <div>
             <form [formGroup]="userDetails">
               <!-- <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Id </label>
                 <input type="text" formControlName="id" class="form-control" id="name" aria-describedby="emailHelp">
               </div> -->
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">FirstName </label>
-                    <input type="text" formControlName="firstname" class="form-control" id="name" aria-describedby="emailHelp" required />
-                  </div>
-                  <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">LastName </label>
-                    <input type="text" formControlName="lastname" class="form-control" id="usename" aria-describedby="emailHelp">
-                  </div>
-                <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">Email </label>
-                  <input type="email" formControlName="email" class="form-control" id="email" aria-describedby="emailHelp">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Address </label>
-                    <input type="text" formControlName="address" class="form-control" id="email" aria-describedby="emailHelp">
-                  </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-outline-success"  data-bs-dismiss="modal" (click)="updateEmployee(userDetails)">Update User </button>
-                  </div>
-              </form>
-            </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">FirstName </label>
+                <input type="text" formControlName="firstname" class="form-control" id="name" aria-describedby="emailHelp" required />
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">LastName </label>
+                <input type="text" formControlName="lastname" class="form-control" id="usename" aria-describedby="emailHelp">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email </label>
+                <input type="email" formControlName="email" class="form-control" id="email" aria-describedby="emailHelp">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Address </label>
+                <input type="text" formControlName="address" class="form-control" id="email" aria-describedby="emailHelp">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal" (click)="updateEmployee(userDetails)">Update User </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-    </div>
   </div>
-
-
+</div>
