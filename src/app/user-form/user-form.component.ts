@@ -4,6 +4,8 @@ import { FormGroup, FormBuilder, FormControl, Validators, ReactiveFormsModule } 
 import {User} from "../../shared/models/user/model"
 import { error } from 'console';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-user-form',
@@ -28,7 +30,7 @@ export class UserFormComponent implements OnInit {
   userObj : User = new User();
   userList : User[] = [];
 
-  constructor(private formBuilder : FormBuilder, private userService : UserServiceService) { }
+  constructor(private formBuilder : FormBuilder, private userService : UserServiceService, private router:Router) { }
 
   ngOnInit(): void {
     // this.getAllUser()
@@ -43,6 +45,7 @@ export class UserFormComponent implements OnInit {
   })
 }
 
+
 // form fields validation
 get id(){
   return this.userDetails.get(`id`)
@@ -54,7 +57,6 @@ get firstname(){
 get lastname(){
   return this.userDetails.get(`lastname`)
 }
-
 
 get email(){
   return this.userDetails.get(`email`)
@@ -74,13 +76,14 @@ get address(){
     this.userObj.address = this.userDetails.value.address;
     
     this.userService.addUser(this.userObj).subscribe((res: any) =>{
-      alert(`added successfully`)
+      alert(`User added successfully`)
       if(!res){
-        alert(`ples add details`)
+        alert(`please add details`)
       }
     }, (error: any)=>{
       console.log(error)
     })
+    this.router.navigate(['/userlist'])
   }
 
   // getAllUser(){
